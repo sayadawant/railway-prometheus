@@ -9,3 +9,13 @@ scrape_configs:
       - targets: ['insightful-abundance-production.up.railway.app']
     scheme: https
     metrics_path: /metrics
+  - job_name: node
+    static_configs:
+      - targets: ["localhost:9090"]
+      
+remote_write:
+  - url: https://prometheus-prod-56-prod-us-east-2.grafana.net/api/prom/push
+    basic_auth:
+      username: 2222265
+      password: '${GRAFANA_PASS}'
+      
