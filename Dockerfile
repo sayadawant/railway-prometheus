@@ -1,21 +1,16 @@
-FROM prom/prometheus:latest
-
-# Copy the Prometheus configuration file
+FROM prom/prometheus
+# copy the Prometheus configuration file
 COPY prometheus.yml /etc/prometheus/prometheus.yml
-
-# Expose the Prometheus server port
+# expose the Prometheus server port
 EXPOSE 9090
-
-# Set the entrypoint command
+# set the entrypoint command
 USER root
 ENTRYPOINT [ "/bin/prometheus" ]
-CMD [ 
-  "--config.file=/etc/prometheus/prometheus.yml", 
-  "--storage.tsdb.path=/prometheus", 
-  "--storage.tsdb.retention=365d", 
-  "--web.console.libraries=/usr/share/prometheus/console_libraries", 
-  "--web.console.templates=/usr/share/prometheus/consoles", 
-  "--log.level=info" 
-]
-
+CMD        [ "--config.file=/etc/prometheus/prometheus.yml", \
+             "--storage.tsdb.path=/prometheus", \
+             "--storage.tsdb.retention=365d", \
+             "--web.console.libraries=/usr/share/prometheus/console_libraries", \
+             "--web.console.templates=/usr/share/prometheus/consoles", \
+             "--web.external-url=http://localhost:9090", \
+             "--log.level=info"]
  
