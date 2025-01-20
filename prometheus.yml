@@ -12,10 +12,3 @@ scrape_configs:
   - job_name: node
     static_configs:
       - targets: ["localhost:9090"]
-      
-remote_write:
-  - url: https://prometheus-prod-56-prod-us-east-2.grafana.net/api/prom/push
-    basic_auth:
-     username: 2222265
-     password: glc_eyJvIjoiMTMyODI1OSIsIm4iOiJzdGFjay0xMTQ5MDExLWFsbG95LXByb21ldGhldXNfY29ubmVjdCIsImsiOiJscnMxMWg5cWE5MjAxM2JRMkV0T0V2OUEiLCJtIjp7InIiOiJwcm9kLXVzLWVhc3QtMCJ9fQ==
-      
