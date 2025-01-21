@@ -1,13 +1,15 @@
 ---
-title: Prometheus
-description: A minimal example of the Prometheus timeseries database
-tags:
-  - prometheus
-  - observability
+title: AI bot monitoring with Prometheus
 ---
 
-# Prometheus Example
+Monitoring a Railway-deployed application with Prometheus and Grafana provides comprehensive insights into the application's performance and reliability. Prometheus acts as a robust time-series database, collecting and storing metrics from the application, while Grafana offers powerful visualization tools to create interactive dashboards based on these metrics. This setup enables developers and operators to monitor key aspects of the application in real-time, facilitating proactive maintenance and optimization.
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/KmJatA?referralCode=9kQOPq)
+Prometheus is an open-source monitoring system designed for reliability and scalability. To set it up, you need to configure Prometheus to scrape metrics from your Railway-deployed application by specifying the appropriate scrape targets in the prometheus.yml configuration file. Ensure that your application exposes a /metrics endpoint compatible with Prometheus, allowing it to collect essential data seamlessly. Deploying Prometheus involves running it as a separate service, either through Docker or directly on a server, and ensuring it has network access to the application's metrics endpoint.
 
-Deploy Prometheus on Railway with one click. Pre-configured to self-monitor the Prometheus service and [a well-known demo-application](http://demo.do.prometheus.io:9090)
+The application tracks three key metrics: uptime, response latency, and the number of user interactions. Uptime is measured in minutes, providing a clear indication of how long the bot has been running without interruptions. Response latency captures the average time taken to process requests, reflecting the bot's efficiency and responsiveness. The number of user interactions counts the total engagements users have with the bot, offering insights into its usage and popularity. These metrics are crucial for maintaining optimal performance and understanding user behavior.
+
+Grafana visualizes the average response latency by querying Prometheus for response_latency_seconds_sum divided by response_latency_seconds_count. This calculation yields the average response time, allowing users to monitor how quickly the bot responds to requests over time. By displaying this metric in Grafana, stakeholders can easily identify trends, detect performance bottlenecks, and ensure that the bot maintains a high level of responsiveness.
+
+The bot's uptime is displayed in minutes within Grafana by directly querying the bot_uptime_minutes gauge metric. This visualization provides a straightforward view of the bot's operational duration, helping to ensure it remains active and functional as expected. Monitoring uptime in minutes offers a granular perspective, enabling quick assessments of the bot's stability and identifying any unexpected downtimes promptly.
+
+Additionally, Grafana visualizes the number of user interactions over time through dynamic graphs. This representation illustrates trends in user engagement, highlighting peak usage periods and overall interaction volumes. By analyzing these graphs, developers can gain valuable insights into user behavior, optimize the bot's features to better meet user needs, and scale resources appropriately to handle varying levels of demand.
